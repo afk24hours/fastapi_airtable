@@ -17,5 +17,13 @@
     <button class="btn btn-lg btn-primary" type="submit">Subscribe</button>
     </div>
 </form>
+    <h2 class="h4 mb-3 fw-normal mt-3">List of subscribed emails</h2>
+    {% for item in list_of_emails %}
+    <div class="col-lg-6" style="float:none;margin:auto;">
+    <ul class="list-group mb-3 mt-3" style="float:none;margin:auto;">
+        <li class="list-group-item">{{ item }}</li>
+    </ul>
+    </div>
+    {% endfor %}
 </main>
 {% endblock %}

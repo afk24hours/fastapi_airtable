@@ -4,7 +4,7 @@ import os
 import pathlib
 from fastapi import FastAPI, Form, Request
 from fastapi.templating import Jinja2Templates
-from .airtable import push_to_airtable
+from .airtable import push_to_airtable, get_from_airtable
 BASE_DIR = pathlib.Path(__file__).parent #src folder
 
 app = FastAPI()
@@ -18,8 +18,10 @@ cached_dotenv()
 
 @app.get("/")
 def home_view(request: Request):
+    list_of_emails = get_from_airtable()
     return templates.TemplateResponse("home.html", {
-        "request":request
+        "request":request,
+        "list_of_emails": list_of_emails
     })
 
 @app.post("/")
