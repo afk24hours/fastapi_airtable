@@ -48,5 +48,4 @@ def get_from_airtable():
     response = []
     for item in r.json()['records']:
         response.append(item['fields']['email is awesome'])
-        print(item['fields']['email is awesome'])
     return response
