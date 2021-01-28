@@ -29,11 +29,12 @@ def home_signup_view(request: Request, email:str = Form(...)):
     """
     CSRF to be added!!!
     """
-
+    list_of_emails = get_from_airtable()
     #to send email to airtable
     did_send = push_to_airtable(email=email)
     return templates.TemplateResponse("home.html", {
         "request":request,
         "submitted_email": email,
-        "did_send": did_send
+        "did_send": did_send,
+        "list_of_emails": list_of_emails
     })

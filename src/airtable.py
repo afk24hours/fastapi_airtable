@@ -44,9 +44,6 @@ def get_from_airtable():
     }
 
     r = requests.get(endpoint, headers = headers, params = params )
-    print(endpoint)
-    print(r.status_code, ' ', r.json())
-    print(len(r.json()['records']))
 
     response = []
     for item in r.json()['records']:
