@@ -5,7 +5,7 @@ import pathlib
 from fastapi import FastAPI, Form, Request
 from fastapi.templating import Jinja2Templates
 from .airtable import push_to_airtable, get_from_airtable
-BASE_DIR = pathlib.Path(__file__).parent #src folder
+BASE_DIR = pathlib.Path(__file__).parent 
 
 app = FastAPI()
 templates = Jinja2Templates(directory= BASE_DIR/ "templates")
@@ -26,9 +26,6 @@ def home_view(request: Request):
 
 @app.post("/")
 def home_signup_view(request: Request, email:str = Form(...)):
-    """
-    CSRF to be added!!!
-    """
     list_of_emails = get_from_airtable()
     #to send email to airtable
     did_send = push_to_airtable(email=email)
