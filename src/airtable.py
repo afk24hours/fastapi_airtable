@@ -3,7 +3,7 @@ import requests
 
 AIRTABLE_BASE_ID=os.environ.get('AIRTABLE_BASE_ID')
 AIRTABLE_API_KEY=os.environ.get('AIRTABLE_API_KEY')
-AIRTABLE_TABLE_NAME=os.environ.get('AIRTABLE_TABLE_NAME)
+AIRTABLE_TABLE_NAME=os.environ.get('AIRTABLE_TABLE_NAME')
 
 def push_to_airtable(email=None):
     if email is None:
