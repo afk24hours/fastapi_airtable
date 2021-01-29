@@ -25,13 +25,12 @@ def home_view(request: Request):
     })
 
 @app.post("/")
-def home_signup_view(request: Request, email:str = Form(...)):
-    list_of_emails = get_from_airtable()
-    #to send email to airtable
-    did_send = push_to_airtable(email=email)
-    return templates.TemplateResponse("home.html", {
+async def home_signup_view(request: Request, email:str = Form(...)):
+    if request.method == 'POST' and email:
+        did_send = push_to_airtable(email=email)
+        return RedirectResponse('https://fastapi-airtable-project.herokuapp.com/')
+    else:
+        return templates.TemplateResponse("home.html", {
         "request":request,
-        "submitted_email": email,
-        "did_send": did_send,
         "list_of_emails": list_of_emails
     })
