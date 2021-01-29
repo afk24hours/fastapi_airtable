@@ -25,7 +25,7 @@ def home_view(request: Request):
     })
 
 @app.post("/")
-async def home_signup_view(request: Request, email:str = Form(...)):
+def home_signup_view(request: Request, email:str = Form(...)):
     if request.method == 'POST' and email:
         did_send = push_to_airtable(email=email)
         return RedirectResponse('https://fastapi-airtable-project.herokuapp.com/')
